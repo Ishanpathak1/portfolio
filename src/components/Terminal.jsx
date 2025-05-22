@@ -205,6 +205,26 @@ export const COMMANDS = {
       }
     }
   },
+  resume: {
+    description: 'Download my resume as a PDF',
+    usage: 'resume',
+    fn: () => {
+      const resumeUrl = '/downloads/Ishan_Resume.pdf';
+      
+      // Create a temporary link element
+      const link = document.createElement('a');
+      link.href = resumeUrl;
+      link.setAttribute('download', 'Ishan_Resume.pdf');
+      link.setAttribute('target', '_blank');
+      
+      // Append to body, click, and remove
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      return ['Downloading resume...'];
+    }
+  },
   goto: {
     description: 'Navigate to a section of the portfolio',
     usage: 'goto <section>',

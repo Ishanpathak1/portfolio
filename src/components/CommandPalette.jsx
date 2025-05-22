@@ -19,9 +19,9 @@ export default function CommandPalette() {
     { id: 'contact', name: 'Contact Information', description: 'Get in touch with me' },
     { id: 'terminal', name: 'Open Terminal', description: 'Access the full command-line interface' },
     { id: 'theme', name: 'Toggle Dark Mode', description: 'Switch between light and dark themes' },
+    { id: 'resume', name: 'Download Resume', description: 'Download my resume as a PDF' },
     { id: 'github', name: 'GitHub Profile', description: 'View my code repositories', url: 'https://github.com/Ishanpathak1' },
     { id: 'linkedin', name: 'LinkedIn Profile', description: 'Connect with me professionally', url: 'https://linkedin.com/in/yourusername' },
-    { id: 'resume', name: 'Download Resume', description: 'Get my latest CV/resume', url: '/resume.pdf' },
   ];
 
   // Reset states when closing the palette
@@ -109,6 +109,18 @@ export default function CommandPalette() {
         document.documentElement.classList.add('dark');
         localStorage.setItem('theme', 'dark');
       }
+      setIsOpen(false);
+      resetPalette();
+    } else if (command.id === 'resume') {
+      // Download resume
+      const resumeUrl = '/downloads/Ishan_Resume.pdf';
+      const link = document.createElement('a');
+      link.href = resumeUrl;
+      link.setAttribute('download', 'Ishan_Resume.pdf');
+      link.setAttribute('target', '_blank');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
       setIsOpen(false);
       resetPalette();
     } else if (command.url) {
