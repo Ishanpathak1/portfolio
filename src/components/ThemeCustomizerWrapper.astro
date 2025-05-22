@@ -1,0 +1,94 @@
+---
+import ThemeCustomizer from './ThemeCustomizer.jsx';
+---
+
+<ThemeCustomizer client:load />
+
+<style is:global>
+  :root {
+    /* Default theme variables - these will be overridden by JS */
+    --color-primary: #3b82f6;
+    --color-primary-dark: #1d4ed8;
+    --color-background-light: #ffffff;
+    --color-background-dark: #111827;
+    --color-text-light: #1f2937;
+    --color-text-dark: #f3f4f6;
+    --spacing-factor: 1;
+  }
+
+  /* Use CSS variables to style elements */
+  .bg-primary {
+    background-color: var(--color-primary) !important;
+  }
+  
+  .text-primary {
+    color: var(--color-primary) !important;
+  }
+  
+  .hover\:bg-primary-dark:hover {
+    background-color: var(--color-primary-dark) !important;
+  }
+  
+  .hover\:text-primary-dark:hover {
+    color: var(--color-primary-dark) !important;
+  }
+  
+  .border-primary {
+    border-color: var(--color-primary) !important;
+  }
+  
+  /* Spacing adjustments */
+  .py-16 {
+    padding-top: calc(4rem * var(--spacing-factor));
+    padding-bottom: calc(4rem * var(--spacing-factor));
+  }
+  
+  .py-8 {
+    padding-top: calc(2rem * var(--spacing-factor));
+    padding-bottom: calc(2rem * var(--spacing-factor));
+  }
+  
+  .py-4 {
+    padding-top: calc(1rem * var(--spacing-factor));
+    padding-bottom: calc(1rem * var(--spacing-factor));
+  }
+  
+  .px-4 {
+    padding-left: calc(1rem * var(--spacing-factor));
+    padding-right: calc(1rem * var(--spacing-factor));
+  }
+  
+  .gap-8 {
+    gap: calc(2rem * var(--spacing-factor));
+  }
+  
+  .gap-4 {
+    gap: calc(1rem * var(--spacing-factor));
+  }
+  
+  .mb-8 {
+    margin-bottom: calc(2rem * var(--spacing-factor));
+  }
+  
+  .mb-4 {
+    margin-bottom: calc(1rem * var(--spacing-factor));
+  }
+  
+  /* Animation controls */
+  .no-animations * {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  /* Adjust dark mode variables */
+  .dark {
+    background-color: var(--color-background-dark);
+    color: var(--color-text-dark);
+  }
+  
+  /* Default light mode */
+  body {
+    background-color: var(--color-background-light);
+    color: var(--color-text-light);
+  }
+</style> 

@@ -1,6 +1,4 @@
 ---
-import DarkModeToggle from './DarkModeToggle.jsx';
-
 const navItems = [
   { name: 'Home', url: '/' },
   { name: 'Projects', url: '/projects' },
@@ -10,92 +8,91 @@ const navItems = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="py-4 border-b border-gray-200 dark:border-gray-800">
-  <div class="container flex items-center justify-between">
-    <!-- Logo -->
-    <a href="/" class="text-2xl font-bold tracking-tight hover:text-primary transition-colors">
-      Ishan<span class="text-primary">.</span>
+<header class="py-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 sticky top-0 z-10">
+  <div class="container flex justify-between items-center">
+    <a href="/" class="text-2xl font-bold text-primary">
+      Ishan
     </a>
     
-    <!-- Desktop Navigation -->
-    <nav class="hidden md:flex items-center gap-8">
-      {navItems.map(item => (
-        <a 
-          href={item.url} 
-          class={`text-sm font-medium hover:text-primary transition-colors ${
-            currentPath === item.url || 
-            (item.url !== '/' && currentPath.startsWith(item.url)) 
-              ? 'text-primary' 
-              : ''
-          }`}
-        >
-          {item.name}
-        </a>
-      ))}
+    <nav class="hidden md:block">
+      <ul class="flex gap-8">
+        <li><a href="/" class="hover:text-primary transition-colors">Home</a></li>
+        <li><a href="/projects" class="hover:text-primary transition-colors">Projects</a></li>
+        <li><a href="/blog" class="hover:text-primary transition-colors">Blog</a></li>
+        <li><a href="#contact" class="hover:text-primary transition-colors">Contact</a></li>
+      </ul>
     </nav>
     
-    <!-- Mobile Menu Button -->
-    <button 
-      id="mobile-menu-button" 
-      class="md:hidden flex items-center p-2"
-      aria-label="Toggle menu"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-      </svg>
-    </button>
-    
-    <!-- Mobile Navigation -->
-    <div id="mobile-menu" class="hidden fixed inset-0 z-50 bg-background-light dark:bg-background-dark">
-      <div class="container pt-20 pb-8">
-        <button 
-          id="mobile-menu-close" 
-          class="absolute top-4 right-4 p-2"
-          aria-label="Close menu"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-        
-        <nav class="flex flex-col gap-6">
-          {navItems.map(item => (
-            <a 
-              href={item.url} 
-              class={`text-xl font-medium hover:text-primary transition-colors ${
-                currentPath === item.url || 
-                (item.url !== '/' && currentPath.startsWith(item.url)) 
-                  ? 'text-primary' 
-                  : ''
-              }`}
-            >
-              {item.name}
-            </a>
-          ))}
-        </nav>
-      </div>
+    <div class="flex items-center gap-4">
+      <!-- Dark Mode Toggle -->
+      <button 
+        id="darkModeToggle" 
+        class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors flex items-center justify-center"
+        aria-label="Toggle dark mode"
+      >
+        <!-- Sun icon (shown in dark mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 hidden dark:block">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+        </svg>
+        <!-- Moon icon (shown in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 block dark:hidden">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+        </svg>
+      </button>
+      
+      <!-- Mobile Menu Button -->
+      <button 
+        id="mobileMenuBtn" 
+        class="md:hidden p-2"
+        aria-label="Toggle mobile menu"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
     </div>
-    
-    <!-- Dark Mode Toggle -->
-    <div class="ml-4">
-      <DarkModeToggle client:load />
-    </div>
+  </div>
+  
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden md:hidden">
+    <nav class="container py-4">
+      <ul class="flex flex-col gap-3">
+        <li><a href="/" class="block py-2 hover:text-primary transition-colors">Home</a></li>
+        <li><a href="/projects" class="block py-2 hover:text-primary transition-colors">Projects</a></li>
+        <li><a href="/blog" class="block py-2 hover:text-primary transition-colors">Blog</a></li>
+        <li><a href="#contact" class="block py-2 hover:text-primary transition-colors">Contact</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
 
 <script>
-  // Mobile menu functionality
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenuClose = document.getElementById('mobile-menu-close');
-  const mobileMenu = document.getElementById('mobile-menu');
-  
-  mobileMenuButton?.addEventListener('click', () => {
-    mobileMenu?.classList.remove('hidden');
-    document.body.classList.add('overflow-hidden');
-  });
-  
-  mobileMenuClose?.addEventListener('click', () => {
-    mobileMenu?.classList.add('hidden');
-    document.body.classList.remove('overflow-hidden');
+  // Handle mobile menu toggle
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    
+    // Handle mobile menu
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+    
+    // Handle dark mode toggle
+    if (darkModeToggle) {
+      darkModeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.contains('dark');
+        
+        if (isDark) {
+          document.documentElement.classList.remove('dark');
+          localStorage.setItem('theme', 'light');
+        } else {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+        }
+      });
+    }
   });
 </script> 

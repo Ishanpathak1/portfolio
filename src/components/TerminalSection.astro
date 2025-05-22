@@ -1,0 +1,20 @@
+---
+import Terminal from './Terminal.jsx';
+---
+
+<section class="py-16 bg-gray-50 dark:bg-gray-900">
+  <div class="container">
+    <h2 class="text-3xl font-bold mb-4 text-center">Interactive Terminal</h2>
+    <p class="text-center text-gray-700 dark:text-gray-300 mb-8">
+      Explore my portfolio through the command line. Type "help" to see all available commands.
+    </p>
+    
+    <div class="max-w-3xl mx-auto">
+      <Terminal client:load />
+    </div>
+    
+    <div class="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
+      <p>Try commands like "about", "projects", "skills", or "contact"</p>
+    </div>
+  </div>
+</section> 

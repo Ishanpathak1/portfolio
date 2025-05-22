@@ -1,0 +1,89 @@
+---
+import CommandPalette from './CommandPalette.jsx';
+---
+
+<CommandPalette client:load />
+
+<!-- Trigger button (optional) -->
+<button 
+  id="commandPaletteTrigger"
+  class="fixed bottom-6 left-6 z-40 p-3 bg-primary text-white rounded-full shadow-lg hover:bg-primary-dark transition-colors"
+  aria-label="Open command palette"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10l.984-.756 8.79 3.954c.188.085.375.085.563 0l8.79-3.954.873.756-9.194 4.113c-.28.125-.595.125-.875 0L3 10z" />
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 19l.984-.756 8.79 3.954c.188.085.375.085.563 0l8.79-3.954.873.756-9.194 4.113c-.28.125-.595.125-.875 0L3 19z" />
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l9-4 9 4-9 4-9-4z" />
+  </svg>
+</button>
+
+<!-- Cmd+K Hint -->
+<div id="cmdKHint" class="fixed bottom-6 right-6 z-40 flex items-center px-4 py-2 bg-primary bg-opacity-90 text-white rounded-full text-sm shadow-lg pulse-animation">
+  Press <kbd class="mx-1 px-2 py-0.5 bg-white bg-opacity-20 rounded font-mono font-bold">⌘</kbd> + <kbd class="mx-1 px-2 py-0.5 bg-white bg-opacity-20 rounded font-mono font-bold">K</kbd> for commands
+</div>
+
+<script>
+  // Handle click on trigger button
+  document.addEventListener('DOMContentLoaded', () => {
+    const triggerBtn = document.getElementById('commandPaletteTrigger');
+    const cmdKHint = document.getElementById('cmdKHint');
+    
+    // Auto-hide hint after 10 seconds
+    setTimeout(() => {
+      cmdKHint?.classList.add('hint-fade-out');
+      setTimeout(() => {
+        cmdKHint?.classList.add('hidden');
+      }, 1000);
+    }, 10000);
+    
+    triggerBtn?.addEventListener('click', () => {
+      // Simulate Cmd+K / Ctrl+K
+      const event = new KeyboardEvent('keydown', {
+        key: 'k',
+        code: 'KeyK',
+        metaKey: true,
+        bubbles: true
+      });
+      
+      document.dispatchEvent(event);
+    });
+    
+    // Also trigger command palette when clicking on the hint
+    cmdKHint?.addEventListener('click', () => {
+      const event = new KeyboardEvent('keydown', {
+        key: 'k',
+        code: 'KeyK',
+        metaKey: true,
+        bubbles: true
+      });
+      
+      document.dispatchEvent(event);
+    });
+  });
+</script>
+
+<style>
+  /* Animation for the hint */
+  .pulse-animation {
+    animation: pulse 2s infinite;
+    cursor: pointer;
+  }
+  
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb, 59, 130, 246), 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(var(--color-primary-rgb, 59, 130, 246), 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb, 59, 130, 246), 0);
+    }
+  }
+  
+  .hint-fade-out {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+</style> 
