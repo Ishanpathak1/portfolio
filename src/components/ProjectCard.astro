@@ -1,0 +1,75 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  tags: string[];
+  image?: string;
+  githubUrl?: string;
+  liveUrl?: string;
+}
+
+const { 
+  title, 
+  description, 
+  tags, 
+  image = '/images/project-placeholder.jpg',
+  githubUrl,
+  liveUrl
+} = Astro.props;
+---
+
+<div class="card group hover:translate-y-[-5px] transition-all duration-300">
+  {image && (
+    <div class="mb-4 overflow-hidden rounded-md">
+      <img 
+        src={image} 
+        alt={`Screenshot of ${title}`} 
+        class="w-full h-48 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+      />
+    </div>
+  )}
+  
+  <h3 class="text-xl font-semibold mb-2">{title}</h3>
+  
+  <p class="text-gray-700 dark:text-gray-300 mb-4">{description}</p>
+  
+  <div class="flex flex-wrap gap-2 mb-4">
+    {tags.map(tag => (
+      <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">
+        {tag}
+      </span>
+    ))}
+  </div>
+  
+  <div class="flex gap-3 mt-auto pt-2">
+    {githubUrl && (
+      <a 
+        href={githubUrl} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="text-sm font-medium flex items-center gap-1 hover:text-primary transition-colors"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+        </svg>
+        Code
+      </a>
+    )}
+    
+    {liveUrl && (
+      <a 
+        href={liveUrl} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="text-sm font-medium flex items-center gap-1 hover:text-primary transition-colors"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
+        Live Demo
+      </a>
+    )}
+  </div>
+</div> 

@@ -1,0 +1,141 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+// Generate paths for all blog posts
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+// Get the blog post for this page
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+// Format date
+function formatDate(date) {
+  return new Date(date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+---
+
+<Layout title={`${entry.data.title} | Ishan Pathak`} description={entry.data.description}>
+  <article class="container py-16">
+    <div class="max-w-3xl mx-auto">
+      <header class="mb-8">
+        <a href="/blog" class="text-sm text-primary hover:underline mb-4 inline-block">
+          ← Back to all posts
+        </a>
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">{entry.data.title}</h1>
+        <div class="flex items-center text-gray-600 dark:text-gray-400 text-sm">
+          <span>{formatDate(entry.data.publishDate)}</span>
+          {entry.data.tags && (
+            <>
+              <span class="mx-2">•</span>
+              <div class="flex flex-wrap gap-2">
+                {entry.data.tags.map(tag => (
+                  <span class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      </header>
+      
+      {entry.data.image && (
+        <div class="mb-8">
+          <img 
+            src={entry.data.image} 
+            alt={entry.data.title} 
+            class="rounded-lg w-full h-auto object-cover max-h-96"
+          />
+        </div>
+      )}
+      
+      <div class="prose prose-lg dark:prose-invert max-w-none">
+        <Content />
+      </div>
+      
+      <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+        <a href="/blog" class="text-primary hover:underline">
+          ← Back to all posts
+        </a>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style is:global>
+  /* Basic markdown styling */
+  .prose {
+    @apply text-gray-800 dark:text-gray-200;
+  }
+  
+  .prose h1, .prose h2, .prose h3, .prose h4 {
+    @apply font-bold text-gray-900 dark:text-white mt-8 mb-4;
+  }
+  
+  .prose h1 {
+    @apply text-3xl;
+  }
+  
+  .prose h2 {
+    @apply text-2xl;
+  }
+  
+  .prose h3 {
+    @apply text-xl;
+  }
+  
+  .prose p {
+    @apply my-4;
+  }
+  
+  .prose a {
+    @apply text-primary hover:underline;
+  }
+  
+  .prose ul, .prose ol {
+    @apply my-4 ml-6;
+  }
+  
+  .prose ul {
+    @apply list-disc;
+  }
+  
+  .prose ol {
+    @apply list-decimal;
+  }
+  
+  .prose blockquote {
+    @apply border-l-4 border-gray-300 dark:border-gray-700 pl-4 italic my-4;
+  }
+  
+  .prose pre {
+    @apply bg-gray-900 text-gray-100 p-4 rounded-md overflow-auto my-4;
+  }
+  
+  .prose code {
+    @apply font-mono text-sm bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded;
+  }
+  
+  .prose pre code {
+    @apply bg-transparent p-0;
+  }
+  
+  .prose img {
+    @apply rounded-md my-6;
+  }
+  
+  .prose hr {
+    @apply border-gray-300 dark:border-gray-700 my-8;
+  }
+</style> 

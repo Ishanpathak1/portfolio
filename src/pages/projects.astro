@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const projects = [
+  {
+    title: 'UnifiedData',
+    description: 'AI-powered CSV editor with auto dashboards and reports for data visualization.',
+    tags: ['React', 'Python', 'FastAPI', 'Docker'],
+    image: '/images/projects/unified-data.png',
+    githubUrl: 'https://github.com/Ishanpathak1/UnifiedData',
+    liveUrl: 'https://www.unifieddata.app/'
+  },
+  {
+    title: 'Revode',
+    description: 'AI memory retention tool for DSA questions to help developers practice efficiently.',
+    tags: ['React', 'JavaScript', 'OpenAI API'],
+    image: '/images/projects/revode.png',
+    githubUrl: 'https://github.com/Ishanpathak1/Revode',
+    liveUrl: 'https://revode.vercel.app'
+  },
+  {
+    title: 'Varnatva',
+    description: 'Blockchain based comment system, with extension',
+    tags: ['Solidity', 'React', 'Javascript', 'HTML','CSS'],
+    image: '/images/projects/varnatva.png',
+    githubUrl: 'https://github.com/Ishanpathak1',
+    liveUrl: 'https://blockchain-comment.vercel.app/'
+  }
+];
+
+---
+
+<Layout title="Projects | Ishan Pathak" description="Explore my projects and portfolio work in web development, AI, and more.">
+  <div class="container py-16">
+    <header class="mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Projects</h1>
+      <p class="text-xl text-gray-700 dark:text-gray-300">
+        A collection of my work, side projects, and experiments.
+      </p>
+    </header>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map(project => (
+        <ProjectCard {...project} />
+      ))}
+    </div>
+  </div>
+</Layout> 

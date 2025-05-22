@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Adding fonts */
+  @font-face {
+    font-family: 'Inter';
+    src: url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Fira Code';
+    src: url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap');
+    font-display: swap;
+  }
+  
+  /* Base styles */
+  body {
+    @apply bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark;
+    @apply min-h-screen transition-colors duration-300;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans font-bold;
+  }
+  
+  h1 {
+    @apply text-4xl md:text-5xl mb-6;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl mb-4;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl mb-3;
+  }
+  
+  a {
+    @apply text-primary hover:text-primary-dark transition-colors;
+  }
+  
+  pre, code {
+    @apply font-mono;
+  }
+  
+  /* Container classes */
+  .container {
+    @apply max-w-4xl mx-auto px-4 sm:px-6;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-colors;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-dark;
+  }
+  
+  .btn-outline {
+    @apply border border-primary text-primary hover:bg-primary hover:text-white dark:border-primary dark:text-primary;
+  }
+  
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-all hover:shadow-lg;
+  }
+} 
