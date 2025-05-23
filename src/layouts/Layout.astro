@@ -7,28 +7,85 @@ import '../styles/global.css';
 export interface Props {
 	title: string;
 	description?: string;
+	image?: string;
+	canonicalURL?: string;
+	type?: 'website' | 'article';
+	publishedDate?: Date;
+	ogType?: string;
 }
 
 const { 
 	title, 
-	description = "Ishan Pathak's portfolio - Full-stack developer and graduate student specializing in React, JavaScript, and AI."
+	description = "Ishan Pathak's portfolio - Full-stack developer and graduate student specializing in React, JavaScript, and AI.",
+	image = "/images/profile-social.jpg",
+	canonicalURL = Astro.url.pathname,
+	type = "website",
+	publishedDate,
+	ogType = "website"
 } = Astro.props;
+
+// Base URL for the site
+const siteUrl = "https://ishanpathak.com";
+
+// SEO - Convert title to include site name if not already
+const siteTitle = title.includes("Ishan Pathak") ? title : `${title} | Ishan Pathak`;
+
+// Full canonical URL
+const fullCanonicalUrl = canonicalURL.startsWith('http') 
+  ? canonicalURL 
+  : `${siteUrl}${canonicalURL.startsWith('/') ? '' : '/'}${canonicalURL}`;
+
+// Full image URL
+const fullImageUrl = image.startsWith('http') 
+  ? image 
+  : `${siteUrl}${image.startsWith('/') ? '' : '/'}${image}`;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
+		
+		<!-- Favicon -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="manifest" href="/site.webmanifest">
+		
+		<!-- Primary Meta Tags -->
+		<title>{siteTitle}</title>
+		<meta name="title" content={siteTitle} />
+		<meta name="description" content={description} />
+		<meta name="keywords" content="Ishan Pathak, web developer, full-stack developer, React, JavaScript, Python, AI, software engineer, portfolio, Albany" />
+		<meta name="author" content="Ishan Pathak" />
+		
+		<!-- Canonical URL -->
+		<link rel="canonical" href={fullCanonicalUrl} />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content={ogType} />
+		<meta property="og:url" content={fullCanonicalUrl} />
+		<meta property="og:title" content={siteTitle} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={fullImageUrl} />
+		<meta property="og:site_name" content="Ishan Pathak" />
+		{publishedDate && <meta property="article:published_time" content={publishedDate.toISOString()} />}
+		
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={fullCanonicalUrl} />
+		<meta property="twitter:title" content={siteTitle} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={fullImageUrl} />
 		
 		<!-- Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+		
+		<meta name="generator" content={Astro.generator} />
 	</head>
 	<body class="font-sans min-h-screen flex flex-col">
 		<!-- Header with navigation -->

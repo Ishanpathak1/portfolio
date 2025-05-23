@@ -75,7 +75,7 @@ const email = "ishan.pathak2711@gmail.com";
           <li>
             <button
               id="contact-button"
-              class="hover:text-primary transition-colors text-left w-full bg-transparent border-0 p-0 font-inherit cursor-pointer"
+              class="hover:text-primary transition-colors text-left w-full bg-transparent border-0 p-0 font-inherit cursor-pointer text-primary"
             >
               Contact
             </button>
@@ -149,6 +149,15 @@ const email = "ishan.pathak2711@gmail.com";
     const closeModal = document.getElementById('close-modal');
     
     if (contactButton && contactModal && closeModal) {
+      // Function to close modal - make it globally accessible
+      window.closeContactModal = () => {
+        contactModal.style.opacity = '0';
+        setTimeout(() => {
+          contactModal.classList.add('hidden');
+          document.body.style.overflow = ''; // Restore background scrolling
+        }, 300); // Match transition duration
+      };
+      
       // Open modal
       contactButton.addEventListener('click', () => {
         contactModal.classList.remove('hidden');
@@ -161,11 +170,7 @@ const email = "ishan.pathak2711@gmail.com";
       
       // Close modal
       closeModal.addEventListener('click', () => {
-        contactModal.style.opacity = '0';
-        setTimeout(() => {
-          contactModal.classList.add('hidden');
-          document.body.style.overflow = ''; // Restore background scrolling
-        }, 300); // Match transition duration
+        window.closeContactModal();
       });
       
       // Close when clicking outside the modal content

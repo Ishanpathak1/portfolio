@@ -21,7 +21,14 @@ const currentPath = Astro.url.pathname;
         <li><a href="/projects" class="hover:text-primary transition-colors">Projects</a></li>
         <li><a href="/blog" class="hover:text-primary transition-colors">Blog</a></li>
         <li><a href="/github-analytics" class="hover:text-primary transition-colors">GitHub Analytics</a></li>
-        <li><a href="#contact" class="hover:text-primary transition-colors">Contact</a></li>
+        <li>
+          <button
+            id="header-contact-button"
+            class="hover:text-primary transition-colors bg-transparent border-0 p-0 font-inherit cursor-pointer font-sans text-base text-primary"
+          >
+            Contact
+          </button>
+        </li>
       </ul>
     </nav>
     
@@ -63,7 +70,14 @@ const currentPath = Astro.url.pathname;
         <li><a href="/projects" class="block py-2 hover:text-primary transition-colors">Projects</a></li>
         <li><a href="/blog" class="block py-2 hover:text-primary transition-colors">Blog</a></li>
         <li><a href="/github-analytics" class="block py-2 hover:text-primary transition-colors">GitHub Analytics</a></li>
-        <li><a href="#contact" class="block py-2 hover:text-primary transition-colors">Contact</a></li>
+        <li>
+          <button
+            id="mobile-contact-button"
+            class="block w-full text-left py-2 hover:text-primary transition-colors bg-transparent border-0 font-inherit cursor-pointer font-sans text-base text-primary"
+          >
+            Contact
+          </button>
+        </li>
       </ul>
     </nav>
   </div>
@@ -75,6 +89,47 @@ const currentPath = Astro.url.pathname;
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const darkModeToggle = document.getElementById('darkModeToggle');
+    
+    // Handle contact buttons (connect to the modal in Footer)
+    const headerContactButton = document.getElementById('header-contact-button');
+    const mobileContactButton = document.getElementById('mobile-contact-button');
+    const contactModal = document.getElementById('contact-modal');
+    
+    // Function to open contact modal
+    const openContactModal = () => {
+      if (contactModal) {
+        contactModal.classList.remove('hidden');
+        setTimeout(() => {
+          contactModal.style.opacity = '1';
+        }, 10);
+        document.body.style.overflow = 'hidden';
+      }
+    };
+    
+    // Add click handlers for contact buttons
+    if (headerContactButton) {
+      headerContactButton.addEventListener('click', openContactModal);
+    }
+    
+    if (mobileContactButton) {
+      mobileContactButton.addEventListener('click', () => {
+        // Hide mobile menu first
+        if (mobileMenu) {
+          mobileMenu.classList.add('hidden');
+        }
+        // Then open contact modal
+        openContactModal();
+      });
+    }
+    
+    // Add event listener for ESC key to close modal
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && contactModal && !contactModal.classList.contains('hidden')) {
+        if (window.closeContactModal) {
+          window.closeContactModal();
+        }
+      }
+    });
     
     // Handle mobile menu
     if (mobileMenuBtn && mobileMenu) {

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Main Pages -->
+  <url>
+    <loc>https://ishanpathak.com/</loc>
+    <lastmod>2023-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://ishanpathak.com/projects</loc>
+    <lastmod>2023-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ishanpathak.com/blog</loc>
+    <lastmod>2023-12-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ishanpathak.com/github-analytics</loc>
+    <lastmod>2023-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Individual Projects (update these with your actual project URLs) -->
+  <url>
+    <loc>https://ishanpathak.com/projects/unifieddata</loc>
+    <lastmod>2023-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ishanpathak.com/projects/revode</loc>
+    <lastmod>2023-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ishanpathak.com/projects/varnatva</loc>
+    <lastmod>2023-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Blog Posts (update or generate these dynamically based on your blog posts) -->
+  <url>
+    <loc>https://ishanpathak.com/blog/creating-ai-powered-csv-editor</loc>
+    <lastmod>2023-12-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ishanpathak.com/blog/implementing-openai-api-in-react</loc>
+    <lastmod>2023-12-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset> 

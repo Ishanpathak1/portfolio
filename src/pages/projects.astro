@@ -6,60 +6,161 @@ const projects = [
   {
     title: 'UnifiedData',
     description: 'AI-powered CSV editor with auto dashboards and reports for data visualization.',
+    longDescription: 'UnifiedData streamlines your CSV data workflow with AI-powered insights, automatic dashboard generation, and visual reporting—all in one intuitive interface. Built for data analysts and business professionals who need quick insights without complex setups.',
     tags: ['React', 'Python', 'FastAPI', 'Docker'],
     image: '/images/projects/unified-data.png',
     githubUrl: 'https://github.com/Ishanpathak1/UnifiedData',
-    liveUrl: 'https://www.unifieddata.app/'
+    liveUrl: 'https://www.unifieddata.app/',
+    slug: 'unifieddata',
+    featured: true
   },
   {
     title: 'Revode',
     description: 'AI memory retention tool for DSA questions to help developers practice efficiently.',
+    longDescription: 'Revode uses spaced repetition and AI-driven question generation to help developers master Data Structures and Algorithms. The app tracks your progress and adapts to your learning style, ensuring efficient skill retention.',
     tags: ['React', 'JavaScript', 'OpenAI API'],
     image: '/images/projects/revode.png',
     githubUrl: 'https://github.com/Ishanpathak1/Revode',
-    liveUrl: 'https://revode.vercel.app'
+    liveUrl: 'https://revode.vercel.app',
+    slug: 'revode',
+    featured: true
   },
   {
     title: 'BloomBot',
     description: 'Your AI companion for mental wellness and personal growth with 24/7 support in a safe space.',
+    longDescription: 'BloomBot provides personalized mental wellness support through an AI companion that offers 24/7 conversation, mindfulness exercises, and growth-oriented guidance. All interactions are private and secure.',
     tags: ['React', 'AI', 'Next.js', 'Tailwind CSS'],
     image: '/images/projects/bloombot.png',
     githubUrl: 'https://github.com/Ishanpathak1/BloomBot',
-    liveUrl: 'https://bloom-bot-psi.vercel.app/'
+    liveUrl: 'https://bloom-bot-psi.vercel.app/',
+    slug: 'bloombot',
+    featured: false
   },
   {
     title: 'AI Resume Editor',
-    description: 'Create professional resumes with AI assistance to stand out in your job search. Features include DOCX import, section marking, and real-time AI suggestions.',
+    description: 'Create professional resumes with AI assistance to stand out in your job search.',
+    longDescription: 'The AI Resume Editor helps job seekers create standout resumes with smart suggestions and formatting. Features include DOCX import, automated section marking, and real-time AI improvement suggestions tailored to your target role.',
     tags: ['React', 'AI', 'TypeScript', 'Tailwind CSS'],
     image: '/images/projects/airesume.png',
     githubUrl: 'https://github.com/Ishanpathak1/ai-resume-editor',
-    liveUrl: 'https://ai-resume-editor.vercel.app'
+    liveUrl: 'https://ai-resume-editor.vercel.app',
+    slug: 'ai-resume-editor',
+    featured: false
   },
   {
     title: 'Varnatva',
-    description: 'Blockchain based comment system, with extension',
+    description: 'Blockchain-based comment system with browser extension integration.',
+    longDescription: 'Varnatva is a decentralized comment system built on blockchain technology that allows users to leave comments on any website. The companion browser extension makes interaction seamless while maintaining comment integrity through distributed ledger technology.',
     tags: ['Solidity', 'React', 'Javascript', 'HTML','CSS'],
     image: '/images/projects/varnatva.png',
     githubUrl: 'https://github.com/Ishanpathak1',
-    liveUrl: 'https://blockchain-comment.vercel.app/'
+    liveUrl: 'https://blockchain-comment.vercel.app/',
+    slug: 'varnatva',
+    featured: false
   }
 ];
 
+// Organize projects by featured status
+const featuredProjects = projects.filter(project => project.featured);
+const otherProjects = projects.filter(project => !project.featured);
+
+// Generate JSON-LD structured data for projects
+const projectsStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": projects.map((project, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "item": {
+      "@type": "SoftwareApplication",
+      "name": project.title,
+      "description": project.description,
+      "applicationCategory": "WebApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "url": project.liveUrl,
+      "image": `https://ishanpathak.com${project.image}`
+    }
+  }))
+};
+
+const pageDescription = "Explore Ishan Pathak's portfolio of web development and AI projects, including full-stack applications, tools, and experiments using React, JavaScript, Python, and more.";
+const pageKeywords = "Ishan Pathak, web projects, portfolio, React applications, AI projects, full-stack development, software engineering, python projects, javascript applications";
 ---
 
-<Layout title="Projects | Ishan Pathak" description="Explore my projects and portfolio work in web development, AI, and more.">
+<Layout 
+  title="Projects Portfolio | Ishan Pathak" 
+  description={pageDescription}
+  canonicalURL="projects"
+  image="/images/projects/meta-image.jpg"
+>
   <div class="container py-16">
     <header class="mb-12">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4">Projects</h1>
-      <p class="text-xl text-gray-700 dark:text-gray-300">
-        A collection of my work, side projects, and experiments.
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Projects Portfolio</h1>
+      <p class="text-xl text-gray-700 dark:text-gray-300 max-w-3xl">
+        A showcase of my technical work including AI-powered tools, web applications, and software solutions built with modern technologies.
       </p>
     </header>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {projects.map(project => (
-        <ProjectCard {...project} />
-      ))}
-    </div>
+    {featuredProjects.length > 0 && (
+      <section aria-labelledby="featured-projects-heading" class="mb-16">
+        <h2 id="featured-projects-heading" class="text-2xl font-bold mb-8 text-center">Featured Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {featuredProjects.map(project => (
+            <ProjectCard {...project} isFeatured={true} />
+          ))}
+        </div>
+      </section>
+    )}
+    
+    <section aria-labelledby="all-projects-heading">
+      <h2 id="all-projects-heading" class="text-2xl font-bold mb-8 text-center">{featuredProjects.length > 0 ? 'More Projects' : 'All Projects'}</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {(featuredProjects.length > 0 ? otherProjects : projects).map(project => (
+          <ProjectCard {...project} />
+        ))}
+      </div>
+    </section>
+    
+    <section class="mt-16 bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+      <h2 class="text-xl font-bold mb-4">My Development Approach</h2>
+      <p class="mb-4">
+        As a developer, I focus on creating solutions that combine technical excellence with intuitive user experiences. 
+        My projects typically feature:
+      </p>
+      <ul class="list-disc pl-6 space-y-2 mb-4">
+        <li>Clean, maintainable code architecture</li>
+        <li>Responsive designs that work on any device</li>
+        <li>Integration of AI and automation to enhance functionality</li>
+        <li>Performance optimization for fast load times</li>
+        <li>Accessibility considerations for all users</li>
+      </ul>
+      <p>
+        Interested in collaborating on a project? <button id="projects-contact-button" class="text-primary hover:underline bg-transparent border-0 p-0 font-inherit cursor-pointer font-bold">Contact me</button> to discuss how we can work together.
+      </p>
+    </section>
   </div>
+  
+  <script type="application/ld+json" set:html={JSON.stringify(projectsStructuredData)} />
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const contactButton = document.getElementById('projects-contact-button');
+      const contactModal = document.getElementById('contact-modal');
+      
+      if (contactButton && contactModal) {
+        contactButton.addEventListener('click', () => {
+          contactModal.classList.remove('hidden');
+          setTimeout(() => {
+            contactModal.style.opacity = '1';
+          }, 10);
+          document.body.style.overflow = 'hidden';
+        });
+      }
+    });
+  </script>
 </Layout> 
