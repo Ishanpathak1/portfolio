@@ -3,6 +3,7 @@ const navItems = [
   { name: 'Home', url: '/' },
   { name: 'Projects', url: '/projects' },
   { name: 'Blog', url: '/blog' },
+  { name: 'GitHub Analytics', url: '/github-analytics' },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -19,6 +20,7 @@ const currentPath = Astro.url.pathname;
         <li><a href="/" class="hover:text-primary transition-colors">Home</a></li>
         <li><a href="/projects" class="hover:text-primary transition-colors">Projects</a></li>
         <li><a href="/blog" class="hover:text-primary transition-colors">Blog</a></li>
+        <li><a href="/github-analytics" class="hover:text-primary transition-colors">GitHub Analytics</a></li>
         <li><a href="#contact" class="hover:text-primary transition-colors">Contact</a></li>
       </ul>
     </nav>
@@ -60,6 +62,7 @@ const currentPath = Astro.url.pathname;
         <li><a href="/" class="block py-2 hover:text-primary transition-colors">Home</a></li>
         <li><a href="/projects" class="block py-2 hover:text-primary transition-colors">Projects</a></li>
         <li><a href="/blog" class="block py-2 hover:text-primary transition-colors">Blog</a></li>
+        <li><a href="/github-analytics" class="block py-2 hover:text-primary transition-colors">GitHub Analytics</a></li>
         <li><a href="#contact" class="block py-2 hover:text-primary transition-colors">Contact</a></li>
       </ul>
     </nav>

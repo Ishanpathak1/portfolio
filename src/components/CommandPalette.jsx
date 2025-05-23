@@ -22,6 +22,25 @@ export default function CommandPalette() {
     { id: 'resume', name: 'Download Resume', description: 'Download my resume as a PDF' },
     { id: 'github', name: 'GitHub Profile', description: 'View my code repositories', url: 'https://github.com/Ishanpathak1' },
     { id: 'linkedin', name: 'LinkedIn Profile', description: 'Connect with me professionally', url: 'https://linkedin.com/in/yourusername' },
+    { id: 'githubanalytics', name: 'GitHub Analytics', description: 'Explore advanced GitHub analytics for any user', path: '/github-analytics' },
+    {
+      id: 'job-search',
+      name: 'Find Job Matches',
+      description: 'Get personalized job recommendations based on GitHub skills',
+      path: '/github-analytics?tab=jobs'
+    },
+    {
+      id: 'job-skills',
+      name: 'Analyze My Job Skills',
+      description: 'Analyze your GitHub profile to identify key job skills',
+      path: '/github-analytics?tab=jobs'
+    },
+    {
+      id: 'github-analytics',
+      name: 'GitHub Analytics',
+      description: 'Explore advanced GitHub profile analytics and visualizations',
+      path: '/github-analytics'
+    },
   ];
 
   // Reset states when closing the palette
@@ -125,6 +144,11 @@ export default function CommandPalette() {
       resetPalette();
     } else if (command.url) {
       window.open(command.url, '_blank');
+      setIsOpen(false);
+      resetPalette();
+    } else if (command.path) {
+      // Navigate to internal path
+      window.location.href = command.path;
       setIsOpen(false);
       resetPalette();
     } else {

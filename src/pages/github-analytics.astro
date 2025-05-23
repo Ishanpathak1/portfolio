@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import GitHubAnalytics from '../components/GitHubAnalytics';
+---
+
+<Layout 
+  title="GitHub Analytics Explorer | Ishan Pathak"
+  description="Analyze any GitHub profile with advanced metrics and interactive visualizations to gain insights into coding patterns."
+>
+  <main class="container py-12">
+    <div class="mb-10 text-center">
+      <h1 class="text-4xl font-bold mb-4">GitHub Analytics Explorer</h1>
+      <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+        Enter any GitHub username to discover advanced analytics, productivity patterns,
+        and interactive data visualizations.
+      </p>
+    </div>
+    
+    <div class="max-w-5xl mx-auto">
+      <GitHubAnalytics client:load />
+    </div>
+    
+    <div class="mt-16 max-w-3xl mx-auto bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-md">
+      <h2 class="text-2xl font-bold mb-4">About This Tool</h2>
+      <p class="mb-4">
+        This GitHub Analytics Explorer goes beyond GitHub's native analytics to provide deeper insights into user profiles, repositories, 
+        and coding patterns through rich interactive visualizations. The tool analyzes:
+      </p>
+      
+      <ul class="list-disc pl-6 space-y-2 mb-6">
+        <li>Productivity patterns by hour of day and day of week with visual graphs</li>
+        <li>Language usage distribution with interactive pie charts</li>
+        <li>Monthly activity trends with timeline visualizations</li>
+        <li>Repository comparison with horizontal bar charts</li>
+        <li>Language proficiency radar charts to visualize technical expertise</li>
+        <li>Commit frequency analysis and contribution streaks</li>
+      </ul>
+      
+      <div class="bg-yellow-100 dark:bg-yellow-900/30 p-4 rounded-lg text-yellow-800 dark:text-yellow-200 text-sm">
+        <p class="font-medium">Note on API Rate Limits</p>
+        <p>GitHub's API has rate limits (60 requests per hour for unauthenticated requests). For a complete analysis, the tool makes multiple API calls, 
+        which may exceed rate limits if analyzing multiple profiles in succession.</p>
+      </div>
+    </div>
+  </main>
+</Layout> 

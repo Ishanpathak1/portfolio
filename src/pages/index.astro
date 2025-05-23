@@ -47,12 +47,12 @@ const projects = [
           Currently focused on AI-powered tools that solve real-world problems.
         </p>
         <div class="flex flex-wrap justify-center gap-4">
-          <a 
-            href="#contact" 
+          <button 
+            id="hero-contact-button" 
             class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"
           >
             Get in Touch
-          </a>
+          </button>
           <a 
             href="#projects" 
             class="px-6 py-3 border border-gray-300 dark:border-gray-700 rounded-lg hover:border-primary hover:text-primary transition-colors"
@@ -121,59 +121,26 @@ const projects = [
       </div>
     </div>
   </section>
-  
-  <!-- Contact Section -->
-  <section id="contact" class="py-16 bg-gray-50 dark:bg-gray-900">
-    <div class="container">
-      <h2 class="text-3xl font-bold mb-4 text-center">Get In Touch</h2>
-      <p class="text-center text-gray-700 dark:text-gray-300 mb-8">
-        Have a project in mind? Let's talk about it.
-      </p>
-      
-      <div class="max-w-lg mx-auto bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-        <form>
-          <div class="mb-4">
-            <label for="name" class="block text-sm font-medium mb-1">Name</label>
-            <input 
-              type="text" 
-              id="name" 
-              class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-900"
-              required
-            />
-          </div>
-          
-          <div class="mb-4">
-            <label for="email" class="block text-sm font-medium mb-1">Email</label>
-            <input 
-              type="email" 
-              id="email" 
-              class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-900"
-              required
-            />
-          </div>
-          
-          <div class="mb-4">
-            <label for="message" class="block text-sm font-medium mb-1">Message</label>
-            <textarea 
-              id="message" 
-              rows="4" 
-              class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-900"
-              required
-            ></textarea>
-          </div>
-          
-          <button 
-            type="submit" 
-            class="w-full py-2 px-4 bg-primary text-white rounded-md hover:bg-primary-dark transition-colors"
-          >
-            Send Message
-          </button>
-        </form>
-      </div>
-    </div>
-  </section>
 </Layout>
 
 <style>
   /* Add any additional page-specific styles here */
 </style>
+
+<script>
+  // Connect hero contact button to footer contact modal
+  document.addEventListener('DOMContentLoaded', () => {
+    const heroContactButton = document.getElementById('hero-contact-button');
+    const contactModal = document.getElementById('contact-modal');
+    
+    if (heroContactButton && contactModal) {
+      heroContactButton.addEventListener('click', () => {
+        contactModal.classList.remove('hidden');
+        setTimeout(() => {
+          contactModal.style.opacity = '1';
+        }, 10);
+        document.body.style.overflow = 'hidden';
+      });
+    }
+  });
+</script>
