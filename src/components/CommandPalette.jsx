@@ -24,18 +24,6 @@ export default function CommandPalette() {
     { id: 'linkedin', name: 'LinkedIn Profile', description: 'Connect with me professionally', url: 'https://linkedin.com/in/yourusername' },
     { id: 'githubanalytics', name: 'GitHub Analytics', description: 'Explore advanced GitHub analytics for any user', path: '/github-analytics' },
     {
-      id: 'job-search',
-      name: 'Find Job Matches',
-      description: 'Get personalized job recommendations based on GitHub skills',
-      path: '/github-analytics?tab=jobs'
-    },
-    {
-      id: 'job-skills',
-      name: 'Analyze My Job Skills',
-      description: 'Analyze your GitHub profile to identify key job skills',
-      path: '/github-analytics?tab=jobs'
-    },
-    {
       id: 'github-analytics',
       name: 'GitHub Analytics',
       description: 'Explore advanced GitHub profile analytics and visualizations',
