@@ -1,16 +1,26 @@
 # Ishan Pathak Portfolio
 
-A professional, minimal, and fast portfolio website built with Astro, React, and Tailwind CSS.
+A professional, modern, and interactive portfolio website built with Astro, React, and Tailwind CSS.
 
 ## Features
 
 - 🚀 **Fast Performance**: Built with Astro for optimal loading speed
 - 🎨 **Responsive Design**: Looks great on all devices using Tailwind CSS
 - 🌓 **Dark Mode**: Toggle between light and dark themes
-- 📝 **Blog with Markdown**: Write blog posts using Markdown or MDX
+- 📝 **Blog with Markdown**: Write blog posts using Markdown
 - 🧩 **Component-Based**: Modular architecture for easy maintenance
 - 📱 **Mobile-First**: Designed with mobile users in mind
+- 💻 **Terminal Interface**: Unique command-line navigation experience
+- 🎨 **Theme Customizer**: Allow visitors to personalize the site's appearance
+- 📊 **GitHub Stats Dashboard**: Real-time repository data visualization
 - 🔄 **Easy Deployment**: Ready for Netlify or Vercel
+
+## Portfolio Projects
+
+- **UnifiedData**: CSV editor with interactive dashboards
+- **Revode**: AI-powered memory retention tool
+- **BloomBot**: AI mental wellness companion
+- **AI Resume Editor**: Smart resume editing tool
 
 ## Getting Started
 
