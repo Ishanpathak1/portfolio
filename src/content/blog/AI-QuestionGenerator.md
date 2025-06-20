@@ -3,56 +3,9 @@ title: "AI Question Generator"
 description: "Learn how to make it with Open AI API."
 publishDate: 2025-06-20
 tags: ["CSS", "Tailwind CSS", "Web Development", "UI Design","Python"]
-image: "/images/blog/tailwind-css.jpg"
+image: "/images/blog/Home.png"
 ---
 # Building an AI-Powered AIGP Exam Preparation System: Concepts and Implementation Guide
-
-## Introduction
-
-The AI Governance Professional (AIGP) certification has become essential for professionals working with artificial intelligence systems. This comprehensive guide explores how to build an intelligent exam preparation platform that combines modern web technologies with advanced AI capabilities to create contextual, relevant practice questions from study materials.
-
----
-
-## Understanding AIGP Certification
-
-### What is AIGP?
-
-The **AI Governance Professional (AIGP)** certification validates expertise in managing AI systems responsibly. It covers four critical domains that every AI professional should master:
-
-**1. AI Governance Foundations (25%)**
-This domain establishes the fundamental understanding of AI governance principles:
-- **AI System Types**: Understanding different categories of AI (narrow AI, general AI, machine learning systems)
-- **Governance Frameworks**: Implementing organizational structures for AI oversight
-- **Stakeholder Management**: Coordinating between technical teams, legal departments, and business units
-- **Policy Development**: Creating comprehensive AI usage policies that balance innovation with responsibility
-
-**2. AI Risk Management (30%)**
-The largest domain focuses on identifying and mitigating AI-specific risks:
-- **Bias Detection**: Recognizing algorithmic bias in training data, model design, and deployment
-- **Safety Considerations**: Ensuring AI systems operate safely in critical applications like healthcare and transportation
-- **Security Vulnerabilities**: Protecting against adversarial attacks, data poisoning, and model theft
-- **Monitoring Systems**: Implementing continuous oversight of AI system performance and behavior
-
-**3. Legal and Regulatory Landscape (25%)**
-This domain addresses the evolving legal environment:
-- **Current Regulations**: Understanding how GDPR, CCPA, and sector-specific laws apply to AI
-- **Emerging Legislation**: Preparing for new AI-specific regulations like the EU AI Act
-- **Compliance Frameworks**: Implementing processes to ensure ongoing regulatory compliance
-- **International Standards**: Aligning with ISO/IEC standards and industry best practices
-
-**4. AI Implementation and Operations (20%)**
-The practical aspects of AI governance:
-- **Program Implementation**: Establishing governance processes within existing organizational structures
-- **Audit and Monitoring**: Creating systems for ongoing oversight and performance evaluation
-- **Incident Response**: Developing procedures for handling AI-related failures or ethical breaches
-- **Vendor Management**: Ensuring third-party AI services meet governance requirements
-
-### Key Resources for AIGP Study
-- [IAPP AIGP Certification](https://iapp.org/certify/aigp/) - Official certification details
-- [EU AI Act](https://artificialintelligenceact.eu/) - Comprehensive AI regulation framework
-- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) - US government guidance
-- [Partnership on AI](https://partnershiponai.org/) - Industry best practices and research
-
 ---
 
 ## Core System Concepts
