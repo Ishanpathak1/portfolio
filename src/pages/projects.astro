@@ -71,9 +71,7 @@ const projects = [
   }
 ];
 
-// Organize projects by featured status
-const featuredProjects = projects.filter(project => project.featured);
-const otherProjects = projects.filter(project => !project.featured);
+
 
 // Generate JSON-LD structured data for projects
 const projectsStructuredData = {
@@ -117,21 +115,10 @@ const pageKeywords = "Ishan Pathak, web projects, portfolio, React applications,
       </p>
     </header>
     
-    {featuredProjects.length > 0 && (
-      <section aria-labelledby="featured-projects-heading" class="mb-16">
-        <h2 id="featured-projects-heading" class="text-2xl font-bold mb-8 text-center">Featured Projects</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {featuredProjects.map(project => (
-            <ProjectCard {...project} isFeatured={true} />
-          ))}
-        </div>
-      </section>
-    )}
-    
     <section aria-labelledby="all-projects-heading">
-      <h2 id="all-projects-heading" class="text-2xl font-bold mb-8 text-center">{featuredProjects.length > 0 ? 'More Projects' : 'All Projects'}</h2>
+      <h2 id="all-projects-heading" class="text-2xl font-bold mb-8 text-center">All Projects</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {(featuredProjects.length > 0 ? otherProjects : projects).map(project => (
+        {projects.map(project => (
           <ProjectCard {...project} />
         ))}
       </div>
