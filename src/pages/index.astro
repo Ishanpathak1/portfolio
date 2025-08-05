@@ -1,9 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import GitHubStatsSection from '../components/GitHubStatsSection.astro';
+
 
 const projects = [
+  {
+    title: 'take-my.info',
+    description: 'Transform your resume into a beautiful, shareable portfolio website in one click.',
+    tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+    image: '/images/projects/portfoliohub.png',
+    githubUrl: 'https://github.com/Ishanpathak1/portfoliome',
+    liveUrl: 'https://take-my.info'
+  },
   {
     title: 'UnifiedData',
     description: 'AI-powered CSV editor with auto dashboards and reports for data visualization.',
@@ -96,8 +104,7 @@ const projects = [
     </div>
   </section>
   
-  <!-- GitHub Stats Section -->
-  <GitHubStatsSection />
+
   
   <!-- Skills Section -->
   <section id="skills" class="py-16">

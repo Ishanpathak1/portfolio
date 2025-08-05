@@ -22,7 +22,7 @@ export default function CommandPalette() {
     { id: 'resume', name: 'Download Resume', description: 'Download my resume as a PDF' },
     { id: 'github', name: 'GitHub Profile', description: 'View my code repositories', url: 'https://github.com/Ishanpathak1' },
     { id: 'linkedin', name: 'LinkedIn Profile', description: 'Connect with me professionally', url: 'https://linkedin.com/in/yourusername' },
-    { id: 'github-analytics', name: 'GitHub Analytics', description: 'Explore advanced GitHub profile analytics and visualizations', path: '/github-analytics' },
+
   ];
 
   // Reset states when closing the palette

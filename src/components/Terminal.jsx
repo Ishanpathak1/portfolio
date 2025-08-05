@@ -236,14 +236,14 @@ export const COMMANDS = {
         about: '#about',
         skills: '#skills',
         contact: '#contact',
-        'github-analytics': '/github-analytics',
+
       };
       
       const section = args[0]?.toLowerCase();
       if (!section || !sections[section]) {
         return [
           'Error: Invalid section. Available sections:',
-          'home, about, projects, skills, contact, blog, github-analytics',
+          'home, about, projects, skills, contact, blog',
           '',
           'Example: goto projects'
         ];
@@ -264,33 +264,9 @@ export const COMMANDS = {
       return [`Navigating to ${section}...`];
     }
   },
-  'github-analytics': {
-    description: 'Explore enhanced GitHub analytics for any user',
-    usage: 'github-analytics',
-    fn: () => {
-      window.location.href = '/github-analytics';
-      return ['Navigating to GitHub Analytics Explorer...'];
-    }
-  },
-  'job-search': {
-    description: 'Get job recommendations based on GitHub profile',
-    usage: 'job-search [username]',
-    fn: (args) => {
-      const username = args[0] || '';
-      if (username) {
-        window.location.href = `/github-analytics?username=${username}&tab=jobs`;
-        return [`Analyzing ${username}'s GitHub profile for job recommendations...`];
-      } else {
-        window.location.href = '/github-analytics?tab=jobs';
-        return ['Navigating to GitHub Analytics for job recommendations...'];
-      }
-    }
-  },
-  'jobs': {
-    description: 'Find job matches based on GitHub skills',
-    usage: 'jobs',
-    fn: () => COMMANDS['job-search'].fn([])
-  },
+
+
+
   clear: {
     description: 'Clear the terminal screen',
     usage: 'clear',
