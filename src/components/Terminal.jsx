@@ -209,12 +209,12 @@ export const COMMANDS = {
     description: 'Download my resume as a PDF',
     usage: 'resume',
     fn: () => {
-      const resumeUrl = '/downloads/Ishan_Resume.pdf';
+      const resumeUrl = '/downloads/IshanResume.pdf';
       
       // Create a temporary link element
       const link = document.createElement('a');
       link.href = resumeUrl;
-      link.setAttribute('download', 'Ishan_Resume.pdf');
+      link.setAttribute('download', 'IshanResume.pdf');
       link.setAttribute('target', '_blank');
       
       // Append to body, click, and remove
