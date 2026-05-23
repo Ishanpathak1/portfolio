@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ProjectCard from '../components/ProjectCard.astro';
 
 const projects = [
   {
@@ -8,10 +7,8 @@ const projects = [
     description: 'Transform your resume into a beautiful, shareable portfolio website in one click.',
     longDescription: 'take-my.info is a smart portfolio generator that converts your resume into a stunning, personalized portfolio website instantly. Features include intelligent resume parsing, multiple themes and layouts, customizable color schemes, and one-click sharing. Built with Next.js and modern web technologies.',
     tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
-    image: '/images/projects/portfoliohub.png',
     githubUrl: 'https://github.com/Ishanpathak1/portfoliome',
     liveUrl: 'https://take-my.info',
-    slug: 'take-my-info',
     featured: true
   },
   {
@@ -19,10 +16,8 @@ const projects = [
     description: 'AI-powered CSV editor with auto dashboards and reports for data visualization.',
     longDescription: 'UnifiedData streamlines your CSV data workflow with AI-powered insights, automatic dashboard generation, and visual reporting—all in one intuitive interface. Built for data analysts and business professionals who need quick insights without complex setups.',
     tags: ['React', 'Python', 'FastAPI', 'Docker'],
-    image: '/images/projects/unified-data.png',
     githubUrl: 'https://github.com/Ishanpathak1/UnifiedData',
     liveUrl: 'https://www.unifieddata.app/',
-    slug: 'unifieddata',
     featured: true
   },
   {
@@ -30,10 +25,8 @@ const projects = [
     description: 'AI memory retention tool for DSA questions to help developers practice efficiently.',
     longDescription: 'Revode uses spaced repetition and AI-driven question generation to help developers master Data Structures and Algorithms. The app tracks your progress and adapts to your learning style, ensuring efficient skill retention.',
     tags: ['React', 'JavaScript', 'OpenAI API'],
-    image: '/images/projects/revode.png',
     githubUrl: 'https://github.com/Ishanpathak1/Revode',
     liveUrl: 'https://revode.vercel.app',
-    slug: 'revode',
     featured: true
   },
   {
@@ -41,10 +34,8 @@ const projects = [
     description: 'Your AI companion for mental wellness and personal growth with 24/7 support in a safe space.',
     longDescription: 'BloomBot provides personalized mental wellness support through an AI companion that offers 24/7 conversation, mindfulness exercises, and growth-oriented guidance. All interactions are private and secure.',
     tags: ['React', 'AI', 'Next.js', 'Tailwind CSS'],
-    image: '/images/projects/bloombot.png',
     githubUrl: 'https://github.com/Ishanpathak1/BloomBot',
     liveUrl: 'https://bloom-bot-psi.vercel.app/',
-    slug: 'bloombot',
     featured: false
   },
   {
@@ -52,53 +43,22 @@ const projects = [
     description: 'Create professional resumes with AI assistance to stand out in your job search.',
     longDescription: 'The AI Resume Editor helps job seekers create standout resumes with smart suggestions and formatting. Features include DOCX import, automated section marking, and real-time AI improvement suggestions tailored to your target role.',
     tags: ['React', 'AI', 'TypeScript', 'Tailwind CSS'],
-    image: '/images/projects/airesume.png',
     githubUrl: 'https://github.com/Ishanpathak1/ai-resume-editor',
     liveUrl: 'https://ai-resume-editor.vercel.app',
-    slug: 'ai-resume-editor',
     featured: false
   },
   {
     title: 'Varnatva',
     description: 'Blockchain-based comment system with browser extension integration.',
     longDescription: 'Varnatva is a decentralized comment system built on blockchain technology that allows users to leave comments on any website. The companion browser extension makes interaction seamless while maintaining comment integrity through distributed ledger technology.',
-    tags: ['Solidity', 'React', 'Javascript', 'HTML','CSS'],
-    image: '/images/projects/varnatva.png',
+    tags: ['Solidity', 'React', 'Javascript', 'HTML', 'CSS'],
     githubUrl: 'https://github.com/Ishanpathak1',
     liveUrl: 'https://blockchain-comment.vercel.app/',
-    slug: 'varnatva',
     featured: false
   }
 ];
 
-
-
-// Generate JSON-LD structured data for projects
-const projectsStructuredData = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "itemListElement": projects.map((project, index) => ({
-    "@type": "ListItem",
-    "position": index + 1,
-    "item": {
-      "@type": "SoftwareApplication",
-      "name": project.title,
-      "description": project.description,
-      "applicationCategory": "WebApplication",
-      "operatingSystem": "Any",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "url": project.liveUrl,
-      "image": `https://ishanpathak.com${project.image}`
-    }
-  }))
-};
-
 const pageDescription = "Explore Ishan Pathak's portfolio of web development and AI projects, including full-stack applications, tools, and experiments using React, JavaScript, Python, and more.";
-const pageKeywords = "Ishan Pathak, web projects, portfolio, React applications, AI projects, full-stack development, software engineering, python projects, javascript applications";
 ---
 
 <Layout 
@@ -107,58 +67,46 @@ const pageKeywords = "Ishan Pathak, web projects, portfolio, React applications,
   canonicalURL="projects"
   image="/images/projects/meta-image.jpg"
 >
-  <div class="container py-16">
-    <header class="mb-12">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4">Projects Portfolio</h1>
-      <p class="text-xl text-gray-700 dark:text-gray-300 max-w-3xl">
-        A showcase of my technical work including AI-powered tools, web applications, and software solutions built with modern technologies.
-      </p>
-    </header>
-    
-    <section aria-labelledby="all-projects-heading">
-      <h2 id="all-projects-heading" class="text-2xl font-bold mb-8 text-center">All Projects</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map(project => (
-          <ProjectCard {...project} />
+  <section class="section">
+    <div class="container">
+      <header>
+        <p class="chip">Project Library</p>
+        <h1 class="mt-5 text-4xl font-extrabold tracking-tight text-slate-900 md:text-6xl dark:text-slate-100">Selected Product Work</h1>
+        <p class="mt-5 max-w-3xl text-lg text-slate-600 dark:text-slate-300">
+          A curated set of web products and AI experiments I have built across full-stack engineering, UX, and automation.
+        </p>
+      </header>
+
+      <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        {projects.map((project) => (
+          <article class="panel flex h-full flex-col p-6">
+            <div class="flex items-start justify-between gap-4">
+              <h2 class="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-100">{project.title}</h2>
+              {project.featured && <span class="chip">Featured</span>}
+            </div>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{project.longDescription}</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span class="chip">{tag}</span>
+              ))}
+            </div>
+            <div class="mt-6 flex gap-3">
+              <a href={project.liveUrl} target="_blank" rel="noreferrer" class="btn btn-primary">Live Demo</a>
+              <a href={project.githubUrl} target="_blank" rel="noreferrer" class="btn btn-secondary">Code</a>
+            </div>
+          </article>
         ))}
       </div>
-    </section>
-    
-    <section class="mt-16 bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-      <h2 class="text-xl font-bold mb-4">My Development Approach</h2>
-      <p class="mb-4">
-        As a developer, I focus on creating solutions that combine technical excellence with intuitive user experiences. 
-        My projects typically feature:
-      </p>
-      <ul class="list-disc pl-6 space-y-2 mb-4">
-        <li>Clean, maintainable code architecture</li>
-        <li>Responsive designs that work on any device</li>
-        <li>Integration of AI and automation to enhance functionality</li>
-        <li>Performance optimization for fast load times</li>
-        <li>Accessibility considerations for all users</li>
-      </ul>
-      <p>
-        Interested in collaborating on a project? <button id="projects-contact-button" class="text-primary hover:underline bg-transparent border-0 p-0 font-inherit cursor-pointer font-bold">Contact me</button> to discuss how we can work together.
-      </p>
-    </section>
-  </div>
-  
-  <script type="application/ld+json" set:html={JSON.stringify(projectsStructuredData)} />
-  
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const contactButton = document.getElementById('projects-contact-button');
-      const contactModal = document.getElementById('contact-modal');
-      
-      if (contactButton && contactModal) {
-        contactButton.addEventListener('click', () => {
-          contactModal.classList.remove('hidden');
-          setTimeout(() => {
-            contactModal.style.opacity = '1';
-          }, 10);
-          document.body.style.overflow = 'hidden';
-        });
-      }
-    });
-  </script>
+
+      <section class="mt-10 panel p-8">
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-900 dark:text-slate-100">How I build</h2>
+        <ul class="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+          <li>• Product-first planning with measurable user outcomes.</li>
+          <li>• Fast interfaces backed by maintainable full-stack architecture.</li>
+          <li>• AI integrations that provide practical value, not novelty.</li>
+          <li>• Strong focus on accessibility, performance, and deployment quality.</li>
+        </ul>
+      </section>
+    </div>
+  </section>
 </Layout> 

@@ -3,69 +3,113 @@
 @tailwind utilities;
 
 @layer base {
-  /* Adding fonts */
-  @font-face {
-    font-family: 'Inter';
-    src: url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-    font-display: swap;
+  :root {
+    --bg: 249, 250, 251;
+    --surface: 255, 255, 255;
+    --muted-surface: 243, 244, 246;
+    --text: 17, 24, 39;
+    --muted-text: 75, 85, 99;
+    --border: 229, 231, 235;
+    --brand: 79, 70, 229;
+    --brand-strong: 67, 56, 202;
+    --brand-soft: 224, 231, 255;
+    --ring: 99, 102, 241;
   }
-  
-  @font-face {
-    font-family: 'Fira Code';
-    src: url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap');
-    font-display: swap;
+
+  .dark {
+    --bg: 3, 7, 18;
+    --surface: 15, 23, 42;
+    --muted-surface: 30, 41, 59;
+    --text: 248, 250, 252;
+    --muted-text: 148, 163, 184;
+    --border: 51, 65, 85;
+    --brand: 129, 140, 248;
+    --brand-strong: 99, 102, 241;
+    --brand-soft: 30, 41, 59;
+    --ring: 165, 180, 252;
   }
-  
-  /* Base styles */
+
+  * {
+    border-color: rgba(var(--border), 0.8);
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
   body {
-    @apply bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark;
-    @apply min-h-screen transition-colors duration-300;
+    @apply min-h-screen antialiased;
+    background: radial-gradient(circle at top, rgba(var(--brand), 0.14), transparent 42%), rgb(var(--bg));
+    color: rgb(var(--text));
+    transition: background-color 220ms ease, color 220ms ease;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-sans font-bold;
-  }
-  
-  h1 {
-    @apply text-4xl md:text-5xl mb-6;
-  }
-  
-  h2 {
-    @apply text-3xl md:text-4xl mb-4;
-  }
-  
-  h3 {
-    @apply text-2xl md:text-3xl mb-3;
-  }
-  
+
   a {
-    @apply text-primary hover:text-primary-dark transition-colors;
+    @apply transition-colors;
   }
-  
-  pre, code {
-    @apply font-mono;
-  }
-  
-  /* Container classes */
-  .container {
-    @apply max-w-4xl mx-auto px-4 sm:px-6;
+
+  ::selection {
+    background: rgba(var(--brand), 0.24);
+    color: rgb(var(--text));
   }
 }
 
 @layer components {
+  .container {
+    @apply mx-auto w-full max-w-6xl px-5 md:px-8;
+  }
+
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .panel {
+    @apply rounded-2xl border shadow-sm;
+    border-color: rgba(var(--border), 0.8);
+    background-color: rgba(var(--surface), 0.8);
+    backdrop-filter: blur(4px);
+  }
+
+  .chip {
+    @apply inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium;
+    border-color: rgba(var(--border), 0.9);
+    color: rgb(var(--muted-text));
+    background-color: rgba(var(--muted-surface), 0.7);
+  }
+
   .btn {
-    @apply px-4 py-2 rounded-md font-medium transition-colors;
+    @apply inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-semibold transition-all duration-200;
   }
-  
+
   .btn-primary {
-    @apply bg-primary text-white hover:bg-primary-dark;
+    color: white;
+    background: linear-gradient(135deg, rgb(var(--brand)), rgb(var(--brand-strong)));
+    box-shadow: 0 8px 30px rgba(var(--brand), 0.34);
   }
-  
-  .btn-outline {
-    @apply border border-primary text-primary hover:bg-primary hover:text-white dark:border-primary dark:text-primary;
+
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 34px rgba(var(--brand), 0.45);
   }
-  
-  .card {
-    @apply bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-all hover:shadow-lg;
+
+  .btn-secondary {
+    @apply border;
+    border-color: rgba(var(--border), 0.9);
+    background-color: rgba(var(--surface), 0.7);
+    color: rgb(var(--text));
   }
-} 
+
+  .btn-secondary:hover {
+    border-color: rgba(var(--brand), 0.5);
+    color: rgb(var(--brand));
+  }
+
+  .section-title {
+    @apply text-3xl font-bold tracking-tight md:text-4xl;
+  }
+
+  .section-subtitle {
+    @apply mt-3 max-w-3xl text-base md:text-lg;
+    color: rgb(var(--muted-text));
+  }
+}

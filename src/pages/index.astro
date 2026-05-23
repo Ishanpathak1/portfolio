@@ -1,228 +1,175 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-
-
-const projects = [
+const featuredProjects = [
   {
     title: 'take-my.info',
-    description: 'Transform your resume into a beautiful, shareable portfolio website in one click.',
-    tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
-    image: '/images/projects/portfoliohub.png',
-    githubUrl: 'https://github.com/Ishanpathak1/portfoliome',
-    liveUrl: 'https://take-my.info'
-  },
-  {
-    title: 'Varnatva',
-    description: 'Blockchain based comment system, with extension',
-    tags: ['Solidity', 'React', 'Javascript', 'HTML','CSS'],
-    image: '/images/projects/varnatva.png',
-    githubUrl: 'https://github.com/Ishanpathak1',
-    liveUrl: 'https://blockchain-comment.vercel.app/'
+    description: 'Resume-to-portfolio platform that turns plain career data into polished personal websites in minutes.',
+    stack: ['Next.js', 'TypeScript', 'Tailwind'],
+    link: 'https://take-my.info'
   },
   {
     title: 'UnifiedData',
-    description: 'AI-powered CSV editor with auto dashboards and reports for data visualization.',
-    tags: ['React', 'Python', 'FastAPI', 'Docker'],
-    image: '/images/projects/unified-data.png',
-    githubUrl: 'https://github.com/Ishanpathak1/UnifiedData',
-    liveUrl: 'https://www.unifieddata.app/'
+    description: 'AI-powered CSV workflow with instant dashboards and automated business reports.',
+    stack: ['React', 'FastAPI', 'Python', 'Docker'],
+    link: 'https://www.unifieddata.app/'
+  },
+  {
+    title: 'Varnatva',
+    description: 'Blockchain-based cross-site commenting with extension support and decentralized storage.',
+    stack: ['Solidity', 'JavaScript', 'Web3'],
+    link: 'https://blockchain-comment.vercel.app/'
   }
+];
+
+const experience = [
+  {
+    company: 'Center for Human Services Research (CHSR)',
+    role: '.NET Intern',
+    location: 'Albany, NY',
+    period: 'Oct 2025 - Present',
+    highlights: [
+      'Building full-stack tools with C#, SQL, JavaScript, HTML, and CSS.',
+      'Contributing to documentation, testing, and security hardening.'
+    ]
+  },
+  {
+    company: 'Securr Technology',
+    role: 'Front-End Engineer Intern',
+    location: 'Ahmedabad, India',
+    period: 'Oct 2023 - Jul 2024',
+    highlights: [
+      'Redesigned and shipped the company website with 25% faster load times.',
+      'Collaborated in Agile workflows with CI/CD deployment pipelines.'
+    ]
+  }
+];
+
+const skills = [
+  'JavaScript', 'TypeScript', 'Astro', 'React', 'Node.js', 'Python',
+  'FastAPI', 'Tailwind CSS', 'PostgreSQL', 'MongoDB', 'Docker', 'AWS'
 ];
 ---
 
-<Layout title="Ishan Pathak - Full Stack Developer">
-  <!-- Hero Section -->
-  <section id="about" class="py-16 md:py-24">
+<Layout title="Ishan Pathak | Full-Stack Developer">
+  <section class="section">
     <div class="container">
-      <div class="max-w-3xl mx-auto text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">
-          Hi, I'm <span class="text-primary">Ishan Pathak</span>
-        </h1>
-        <p class="text-xl md:text-2xl mb-8 text-gray-700 dark:text-gray-300">
-          Full-Stack Developer & Computer Science Graduate Student
-        </p>
-        <p class="text-lg mb-8 text-gray-600 dark:text-gray-400">
-          I build modern web applications with React, JavaScript, and Python.
-          Currently focused on AI-powered tools that solve real-world problems.
-        </p>
-        <div class="flex flex-wrap justify-center gap-4">
-          <button 
-            id="hero-contact-button" 
-            class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"
-          >
-            Get in Touch
-          </button>
-          <a 
-            href="#projects" 
-            class="px-6 py-3 border border-gray-300 dark:border-gray-700 rounded-lg hover:border-primary hover:text-primary transition-colors"
-          >
-            View My Work
-          </a>
+      <div class="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+        <div>
+          <p class="chip">Full-Stack Developer • Albany, NY</p>
+          <h1 class="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-slate-900 md:text-6xl dark:text-slate-100">
+            I build modern software experiences that feel fast and thoughtful.
+          </h1>
+          <p class="mt-6 max-w-2xl text-lg text-slate-600 dark:text-slate-300">
+            I am Ishan Pathak, a developer focused on product-minded engineering, clean UI systems, and practical AI features that solve real user problems.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a class="btn btn-primary" href="#projects">See Projects</a>
+            <a class="btn btn-secondary" href="/IshanResume.pdf">Download Resume</a>
+          </div>
+        </div>
+
+        <div class="panel p-6 md:p-8">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-300">Highlights</p>
+          <dl class="mt-5 space-y-5">
+            <div class="flex items-end justify-between border-b border-slate-200 pb-3 dark:border-slate-700">
+              <dt class="text-sm text-slate-500 dark:text-slate-400">Years building on the web</dt>
+              <dd class="text-2xl font-bold text-slate-900 dark:text-slate-100">3+</dd>
+            </div>
+            <div class="flex items-end justify-between border-b border-slate-200 pb-3 dark:border-slate-700">
+              <dt class="text-sm text-slate-500 dark:text-slate-400">Shipped products</dt>
+              <dd class="text-2xl font-bold text-slate-900 dark:text-slate-100">10+</dd>
+            </div>
+            <div class="flex items-end justify-between">
+              <dt class="text-sm text-slate-500 dark:text-slate-400">Focus areas</dt>
+              <dd class="text-right text-sm font-semibold text-slate-800 dark:text-slate-100">Full-stack apps<br />AI tooling<br />Performance</dd>
+            </div>
+          </dl>
         </div>
       </div>
     </div>
   </section>
-  
-  <!-- Work Experience -->
-  <section id="experience" class="py-16">
+
+  <section id="experience" class="section pt-0">
     <div class="container">
-      <h2 class="text-3xl font-bold mb-4 text-center">Work Experience</h2>
-      <p class="text-center text-gray-700 dark:text-gray-300 mb-8">
-        Roles and responsibilities from my recent positions
-      </p>
-
-      <div class="max-w-4xl mx-auto space-y-6">
-        <!-- CHSR Intern -->
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
-          <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-            <div>
-              <h3 class="text-xl font-semibold">
-                <a href="https://www.albany.edu/cihs/center-human-services-research" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
-                  Center for Human Services Research (CHSR)
-                </a>
-              </h3>
-              <p class="text-gray-600 dark:text-gray-400">.NET Intern — Albany, NY, USA</p>
+      <h2 class="section-title">Experience</h2>
+      <p class="section-subtitle">A few places where I have delivered engineering impact recently.</p>
+      <div class="mt-8 space-y-4">
+        {experience.map((job) => (
+          <article class="panel p-6">
+            <div class="flex flex-col justify-between gap-3 md:flex-row md:items-start">
+              <div>
+                <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100">{job.company}</h3>
+                <p class="mt-1 text-sm font-medium text-indigo-600 dark:text-indigo-300">{job.role} • {job.location}</p>
+              </div>
+              <p class="chip">{job.period}</p>
             </div>
-            <span class="mt-2 md:mt-0 text-sm text-gray-500">October 2025 – Present</span>
-          </div>
-          <ul class="mt-4 list-disc list-inside space-y-1 text-gray-700 dark:text-gray-300">
-            <li>Working on technical documentation, test suites, and security analysis of existing applications.</li>
-            <li>Developing full stack applications utilizing C#, SQL, JavaScript, HTML, and CSS.</li>
-          </ul>
-        </div>
-
-        <!-- University at Albany -->
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
-          <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-            <div>
-              <h3 class="text-xl font-semibold">University at Albany, SUNY</h3>
-              <p class="text-gray-600 dark:text-gray-400">Graduate Ambassador — Albany, NY, USA</p>
-            </div>
-            <span class="mt-2 md:mt-0 text-sm text-gray-500">August 2025 – December 2025</span>
-          </div>
-          <ul class="mt-4 list-disc list-inside space-y-1 text-gray-700 dark:text-gray-300">
-            <li>Helping prospective students in the admission process, handling events, and collaborating with the team.</li>
-          </ul>
-        </div>
-
-        <!-- Securr Technology -->
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
-          <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-            <div>
-              <h3 class="text-xl font-semibold">Securr Technology</h3>
-              <p class="text-gray-600 dark:text-gray-400">Front-End Engineer Intern — Ahmedabad, Gujarat, India</p>
-              <p class="text-gray-600 dark:text-gray-400 text-sm">Stack: React, JavaScript, HTML5, CSS</p>
-            </div>
-            <span class="mt-2 md:mt-0 text-sm text-gray-500">October 2023 – July 2024</span>
-          </div>
-          <ul class="mt-4 list-disc list-inside space-y-1 text-gray-700 dark:text-gray-300">
-            <li>Developed and launched a redesigned website, improving page load speed by 25%.</li>
-            <li>Collaborated in an Agile team, using Git and CI/CD pipelines to deploy updates.</li>
-          </ul>
-        </div>
-
-        <!-- Celo Academy -->
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
-          <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-            <div>
-              <h3 class="text-xl font-semibold">Celo Academy</h3>
-              <p class="text-gray-600 dark:text-gray-400">Head Moderator — Remote</p>
-              <p class="text-gray-600 dark:text-gray-400 text-sm">Stack: Python, Solidity, Web3, Blockchain</p>
-            </div>
-            <span class="mt-2 md:mt-0 text-sm text-gray-500">December 2022 – June 2023</span>
-          </div>
-          <ul class="mt-4 list-disc list-inside space-y-1 text-gray-700 dark:text-gray-300">
-            <li>Maintained a GitHub PR cadence of 200+ posts per month, managing a team of 100.</li>
-            <li>Authored 5+ articles on Build in Public, SDK tools for Web3, and Blockchain.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="mt-10 text-center">
-        <a href="/downloads/IshanResume.pdf" class="px-6 py-3 border border-gray-300 dark:border-gray-700 rounded-lg hover:border-primary hover:text-primary transition-colors">
-          See Resume
-        </a>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Featured Projects -->
-  <section id="projects" class="py-16 bg-gray-50 dark:bg-gray-900">
-    <div class="container">
-      <h2 class="text-3xl font-bold mb-4 text-center">Featured Projects</h2>
-      <p class="text-center text-gray-700 dark:text-gray-300 mb-8">
-        Check out some of my recent work
-      </p>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project) => (
-          <ProjectCard
-            title={project.title}
-            description={project.description}
-            image={project.image}
-            tags={project.tags}
-            githubUrl={project.githubUrl}
-            liveUrl={project.liveUrl}
-          />
+            <ul class="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+              {job.highlights.map((point) => (
+                <li>• {point}</li>
+              ))}
+            </ul>
+          </article>
         ))}
       </div>
-      
-      <div class="mt-12 text-center">
-        <a 
-          href="/projects" 
-          class="px-6 py-3 border border-gray-300 dark:border-gray-700 rounded-lg hover:border-primary hover:text-primary transition-colors"
-        >
-          View All Projects
-        </a>
+    </div>
+  </section>
+
+  <section id="projects" class="section pt-0">
+    <div class="container">
+      <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div>
+          <h2 class="section-title">Featured Projects</h2>
+          <p class="section-subtitle">Recent products focused on usability, automation, and performance.</p>
+        </div>
+        <a href="/projects" class="btn btn-secondary w-fit">View All Projects</a>
+      </div>
+
+      <div class="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        {featuredProjects.map((project) => (
+          <article class="panel p-6 transition-transform hover:-translate-y-1">
+            <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100">{project.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{project.description}</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              {project.stack.map((tag) => (
+                <span class="chip">{tag}</span>
+              ))}
+            </div>
+            <a href={project.link} target="_blank" rel="noreferrer" class="mt-5 inline-flex text-sm font-semibold text-indigo-600 hover:text-indigo-500 dark:text-indigo-300 dark:hover:text-indigo-200">
+              Open Project →
+            </a>
+          </article>
+        ))}
       </div>
     </div>
   </section>
-  
 
-  
-  <!-- Skills Section -->
-  <section id="skills" class="py-16">
+  <section id="skills" class="section pt-0">
     <div class="container">
-      <h2 class="text-3xl font-bold mb-4 text-center">Skills & Technologies</h2>
-      <p class="text-center text-gray-700 dark:text-gray-300 mb-8">
-        Technologies I work with regularly
-      </p>
-      
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-3xl mx-auto">
-        {[
-          "JavaScript", "TypeScript", "React", "Node.js",
-          "Python", "FastAPI", "HTML/CSS", "Tailwind CSS",
-          "Git", "Docker", "AWS", "MongoDB",
-          "PostgreSQL", "Next.js", "Redux", "REST APIs"
-        ].map((skill) => (
-          <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm text-center border border-gray-200 dark:border-gray-700 hover:border-primary hover:text-primary hover:shadow-md transform hover:-translate-y-1 transition-all duration-300">
-            {skill}
-          </div>
+      <h2 class="section-title">Skills & Toolbox</h2>
+      <p class="section-subtitle">Technologies I use to design, build, and ship reliable products.</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        {skills.map((skill) => (
+          <span class="chip text-sm">{skill}</span>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section pt-0">
+    <div class="container">
+      <div class="panel p-8 md:p-10">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-300">Contact</p>
+        <h2 class="mt-4 text-3xl font-bold tracking-tight text-slate-900 md:text-4xl dark:text-slate-100">
+          Let’s build something valuable together.
+        </h2>
+        <p class="mt-4 max-w-2xl text-slate-600 dark:text-slate-300">
+          I am open to internships, full-time opportunities, and product collaborations. If you have an idea in mind, I would love to hear it.
+        </p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="mailto:ishan.pathak2711@gmail.com" class="btn btn-primary">Email Me</a>
+          <a href="https://www.linkedin.com/in/ishan-pathak-96852a1b7/" target="_blank" rel="noreferrer" class="btn btn-secondary">Connect on LinkedIn</a>
+        </div>
       </div>
     </div>
   </section>
 </Layout>
-
-<style>
-  /* Add any additional page-specific styles here */
-</style>
-
-<script>
-  // Connect hero contact button to footer contact modal
-  document.addEventListener('DOMContentLoaded', () => {
-    const heroContactButton = document.getElementById('hero-contact-button');
-    const contactModal = document.getElementById('contact-modal');
-    
-    if (heroContactButton && contactModal) {
-      heroContactButton.addEventListener('click', () => {
-        contactModal.classList.remove('hidden');
-        setTimeout(() => {
-          contactModal.style.opacity = '1';
-        }, 10);
-        document.body.style.overflow = 'hidden';
-      });
-    }
-  });
-</script>
