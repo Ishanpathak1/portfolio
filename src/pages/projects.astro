@@ -17,7 +17,6 @@ const projects = [
     longDescription: 'UnifiedData streamlines your CSV data workflow with AI-powered insights, automatic dashboard generation, and visual reporting—all in one intuitive interface. Built for data analysts and business professionals who need quick insights without complex setups.',
     tags: ['React', 'Python', 'FastAPI', 'Docker'],
     githubUrl: 'https://github.com/Ishanpathak1/UnifiedData',
-    liveUrl: 'https://www.unifieddata.app/',
     featured: true
   },
   {
@@ -44,7 +43,6 @@ const projects = [
     longDescription: 'The AI Resume Editor helps job seekers create standout resumes with smart suggestions and formatting. Features include DOCX import, automated section marking, and real-time AI improvement suggestions tailored to your target role.',
     tags: ['React', 'AI', 'TypeScript', 'Tailwind CSS'],
     githubUrl: 'https://github.com/Ishanpathak1/ai-resume-editor',
-    liveUrl: 'https://ai-resume-editor.vercel.app',
     featured: false
   },
   {
@@ -91,8 +89,10 @@ const pageDescription = "Explore Ishan Pathak's portfolio of web development and
               ))}
             </div>
             <div class="mt-6 flex gap-3">
-              <a href={project.liveUrl} target="_blank" rel="noreferrer" class="btn btn-primary">Live Demo</a>
-              <a href={project.githubUrl} target="_blank" rel="noreferrer" class="btn btn-secondary">Code</a>
+              {project.liveUrl && (
+                <a href={project.liveUrl} target="_blank" rel="noreferrer" class="btn btn-primary">Live Demo</a>
+              )}
+              <a href={project.githubUrl} target="_blank" rel="noreferrer" class="btn btn-secondary">View Code</a>
             </div>
           </article>
         ))}

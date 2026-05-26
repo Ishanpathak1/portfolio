@@ -11,7 +11,8 @@ const featuredProjects = [
     title: 'UnifiedData',
     description: 'AI-powered CSV workflow with instant dashboards and automated business reports.',
     stack: ['React', 'FastAPI', 'Python', 'Docker'],
-    link: 'https://www.unifieddata.app/'
+    link: 'https://github.com/Ishanpathak1/UnifiedData',
+    linkLabel: 'View Code'
   },
   {
     title: 'Varnatva',
@@ -135,7 +136,7 @@ const skills = [
               ))}
             </div>
             <a href={project.link} target="_blank" rel="noreferrer" class="mt-5 inline-flex text-sm font-semibold text-indigo-600 hover:text-indigo-500 dark:text-indigo-300 dark:hover:text-indigo-200">
-              Open Project →
+              {project.linkLabel ?? 'Open Project'} →
             </a>
           </article>
         ))}
